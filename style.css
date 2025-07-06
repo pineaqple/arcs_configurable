@@ -116,7 +116,6 @@ canvas {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
   width: 100%;
   min-height: 3.5rem;
   transition: all 0.3s ease;
@@ -366,8 +365,8 @@ canvas {
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  user-select: none;
   -webkit-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -482,6 +481,7 @@ label:has(+ input[type="range"]:disabled) {
     display: flex;
     flex-direction: column;
     height: 100%;
+
   }
 
   .controls-toolbar {
@@ -562,11 +562,11 @@ label:has(+ input[type="range"]:disabled) {
   #controls {
     max-width: 350px;
     margin-right: 5rem;
+
+    height: auto;
+
   }
 
-  .controls-toolbar {
-    margin-bottom: 0.5rem;
-  }
 
   #toggle-controls,
   #toggle-refresh {
