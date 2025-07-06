@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tissues</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
+    <title>Tissues 2</title>
+    <script src="/lib/p5.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -12,33 +12,51 @@
       <div id="canvas-container"></div>
 
       <div id="original-image-container">
-        <img src="/img/original.png" alt="Original Image">
+        <img src="/img/original.jpg" alt="Original Image">
         <button id="close-original">X</button>
       </div>
 
       <div id="controls">
         <div class="controls-toolbar">
+
+
+<div class="toolbar-toggle-container">
+            <div class="toolbar-toggle-switch" id="randomizedToggleSwitch">
+              <div class="toolbar-toggle-slider">O</div>
+            </div>
+            <div class="toolbar-toggle-labels">
+              <span class="toggle-label-left">Original</span>
+              <span class="toggle-label-right">Randomized</span>
+            </div>
+          </div>
+
+
           <div class="image-stack">
             <img id="toggle-picture" src="/img/picture.png" alt="Source Image">
             <img id="toggle-glass" src="/img/glass.png" alt="Source Image">
           </div>
+
+          <img id="toggle-save" src="/img/diskette.png" alt="Save Canvas">
+
+          
           <img id="toggle-refresh" src="/img/retry.png" alt="Refresh">
           <img id="toggle-controls" src="/img/gear.png" alt="Toggle Controls">
-          <img id="toggle-save" src="/img/diskette.png" alt="Save Canvas">
+          
         </div>
         
         <div id="controls-content">
-          <div class="control-item">
-            <div class="radio-group">
-              <input type="radio" id="option1" name="options" value="nonrandom" checked>
-              <label for="option1">Original colors</label>
-            </div>
-            <div class="radio-group">
-              <input type="radio" id="option2" name="options" value="random">
-              <label for="option2">Randomized colors</label>
-            </div>
-          </div>
-          
+         <div class="control-item">
+  <input type="checkbox" id="textureOverlay">
+  <label for="textureOverlay">Texture overlay</label>
+</div>
+          <label class="toggle-label">Inner Color</label>
+        <div class="toggle-switch" id="colorToggleSwitch">
+            <div class="toggle-slider">W</div>
+        </div>
+        <div class="control-item">
+  <label for="colorNumber">Number of colors</label>
+  <input type="number" id="colorNumber" min="1" max="100" value="1" step="1">
+</div>
           <div class="control-item">
             <label for="slider1">Saturation</label>
             <input type="range" title="Saturation" id="slider1" min="5" max="100" value="50" step="5">
