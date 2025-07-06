@@ -338,6 +338,62 @@ const CanvasOps = {
 
 // ===== UI CONTROLS MODULE =====
 const UIControls = {
+
+/**
+ * Initializes custom number input controls with increment/decrement buttons
+ */
+initializeNumberInput() {
+  const input = document.getElementById('colorNumber');
+  const decrementBtn = document.getElementById('colorNumberDown');
+  const incrementBtn = document.getElementById('colorNumberUp');
+  
+  input.value = 1;
+
+  /**
+   * Updates the input value within min/max constraints
+   * @param {number} delta - Amount to change the value by
+   */
+  function updateValue(delta) {
+    const currentValue = parseInt(input.value) || 1;
+    const newValue = currentValue + delta;
+    const min = parseInt(input.min) || 1;
+    const max = parseInt(input.max) || 100;
+    
+    if (newValue >= min && newValue <= max) {
+      input.value = newValue;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    
+    updateButtonStates();
+  }
+  
+  /**
+   * Updates button disabled states based on current value
+   */
+  function updateButtonStates() {
+    const value = parseInt(input.value) || 1;
+    const min = parseInt(input.min) || 1;
+    const max = parseInt(input.max) || 100;
+    
+    decrementBtn.disabled = value <= min;
+    incrementBtn.disabled = value >= max;
+
+    AppState.colorNum = value;
+    drawCanvas();
+  }
+  
+  // Button click handlers
+  decrementBtn.addEventListener('click', () => updateValue(-1));
+  incrementBtn.addEventListener('click', () => updateValue(1));
+  
+  // Update button states when input changes directly
+  input.addEventListener('input', updateButtonStates);
+  
+  // Initialize button states
+  updateButtonStates();
+},
+
+
   /**
    * Initializes the color toggle control
    */
@@ -730,6 +786,7 @@ document.addEventListener("DOMContentLoaded", function () {
   UIControls.setupColorNumberSelector();
   EventHandlers.setupEventHandlers();
   UIControls.updateRandomizedToggleState();
+  UIControls.initializeNumberInput();
 });
 
 // ===== ARRAY PROTOTYPE EXTENSION =====

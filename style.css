@@ -318,18 +318,93 @@ canvas {
   border: 1px solid #ddd;
 }
 
-.control-item input[type="number"] {
-  width: 100%;
+/* Custom number input with buttons */
+.number-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.number-input-wrapper input[type="number"] {
+  width: 4rem;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  text-align: center;
   box-sizing: border-box;
+  /* Hide default arrows */
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
-.control-item input[type="number"]:focus {
+/* Remove spinner arrows for Chrome, Safari, Edge */
+.number-input-wrapper input[type="number"]::-webkit-inner-spin-button,
+.number-input-wrapper input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-input-wrapper input[type="number"]:focus {
   outline: none;
   border-color: #333;
+}
+
+.number-button {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.number-button:hover {
+  background-color: #f0f0f0;
+}
+
+.number-button:active {
+  background-color: #e0e0e0;
+  transform: scale(0.95);
+}
+
+.number-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.number-button:disabled:hover {
+  background-color: #fff;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 400px) {
+  .number-input-wrapper {
+    gap: 0.25rem;
+  }
+  
+  .number-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .number-input-wrapper input[type="number"] {
+    width: 3.5rem;
+    font-size: 0.9rem;
+  }
 }
 
 #controls-content {
@@ -489,10 +564,15 @@ label:has(+ input[type="range"]:disabled) {
     margin-right: 5rem;
   }
 
+  .controls-toolbar {
+    margin-bottom: 0.5rem;
+  }
+
   #toggle-controls,
   #toggle-refresh {
     width: 5rem;
     height: 5rem;
+    margin-bottom: 0.5rem;
     /* Ensure display: none is respected in media query */
     display: none;
   }
@@ -505,16 +585,19 @@ label:has(+ input[type="range"]:disabled) {
   #toggle-save {
     width: 4.5rem;
     height: 4.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .image-stack {
     width: 5rem;
     height: 5rem;
+    margin-bottom: 0.5rem;
   }
 
    .toolbar-toggle-container {
     width: 5rem;
     height: 5rem;
+    margin-bottom: 0.5rem;
   }
 
   .toolbar-toggle-switch {

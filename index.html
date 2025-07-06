@@ -55,7 +55,11 @@
         </div>
         <div class="control-item">
   <label for="colorNumber">Number of colors</label>
-  <input type="number" id="colorNumber" min="1" max="100" value="1" step="1">
+  <div class="number-input-wrapper">
+    <button class="number-button" id="colorNumberDown">−</button>
+    <input type="number" id="colorNumber" min="1" max="100" value="1" step="1">
+    <button class="number-button" id="colorNumberUp">+</button>
+  </div>
 </div>
           <div class="control-item">
             <label for="slider1">Saturation</label>
